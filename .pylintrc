@@ -1,0 +1,9 @@
+[MASTER]
+extension-pkg-allow-list=pydantic
+
+disable=
+    C0114, # missing-module-docstring
+    C0116, # Missing function or method docstring (missing-function-docstring)
+    C0115, # Missing class docstring (missing-class-docstring)
+    R0903, # Too few public methods (0/2) (too-few-public-methods)
+    C0103, # Argument name "db" doesn't conform to snake_case naming style

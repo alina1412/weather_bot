@@ -1,0 +1,13 @@
+.env
+**/__pycache__/*
+.vscode/*
+tmp/*
+*.db
+.venv/*
+
+.pytest_cache/*
+.database_data/*
+migrations/*
+htmlcov/*
+.coverage
+example_*
