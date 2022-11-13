@@ -1,5 +1,5 @@
 import pytest
-import requests
+import httpx
 
 from bot_service.config import Config
 
@@ -8,13 +8,11 @@ from bot_service.config import Config
 async def test_get_weather_data():
     assert Config.weather_token is not None
     city = "Moscow"
-    url = (
-        "http://api.openweathermap.org"
-        + f"/data/2.5/weather?q={city}"
-    )
+    url = "http://api.openweathermap.org" + f"/data/2.5/weather?q={city}"
     params = {
         "units": "metric",
         "appid": Config.weather_token,
     }
-    resp = requests.get(url, params=params)
-    assert resp.ok is True
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(url, params=params)
+    assert resp.status_code == 200
