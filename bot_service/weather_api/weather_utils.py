@@ -9,6 +9,8 @@ logger.setLevel(logging.DEBUG)
 
 def prepare_query(city):
     query = city.replace("-", " ")
+    while "  " in query:
+        query = query.replace("  ", " ")
     query = "+".join(query.split(" "))
     return query
 
