@@ -1,5 +1,5 @@
-import pytest
 import httpx
+import pytest
 
 from bot_service.config import Config
 

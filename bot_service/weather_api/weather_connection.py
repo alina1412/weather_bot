@@ -1,4 +1,3 @@
-# import asyncio
 import logging
 
 import httpx
@@ -11,6 +10,7 @@ from bot_service.config import Config
 
 
 async def get_temperature(city) -> float | None:
+    """http://api.openweathermap.org/data/2.5/weather"""
     url = Config.weather_url
     url = url + f"?q={city}"
     params = {"units": "metric", "appid": Config.weather_token}

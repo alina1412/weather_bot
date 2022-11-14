@@ -8,10 +8,9 @@ def is_english(phrase) -> bool:
         phrase.encode(encoding="utf-8").decode("ascii")
     except UnicodeDecodeError:
         return False
-    else:
-        phrase = phrase.replace(" ", "")
-        phrase = phrase.replace("-", "")
-        return phrase.isalpha()
+    phrase = phrase.replace(" ", "")
+    phrase = phrase.replace("-", "")
+    return phrase.isalpha()
 
 
 async def parse_city(city) -> str:
@@ -28,8 +27,8 @@ async def choose_city(chat_id, city) -> str:
     parsed_city = await parse_city(city)
     if not parsed_city:
         return "We can't understand. Please, type the name of the city"
-    
-    reply_text, success = await get_response_with_temperature(city)
+
+    reply_text, success = await get_response_with_temperature(parsed_city)
     if success:
         Crud().write_chosen_city(parsed_city, chat_id)
     return f"Your city is {parsed_city}.\n" + reply_text
