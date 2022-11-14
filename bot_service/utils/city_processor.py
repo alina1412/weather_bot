@@ -16,6 +16,8 @@ def is_english(phrase) -> bool:
 async def parse_city(city) -> str:
     """makes some validations"""
     city = city.strip()
+    while "  " in city:
+        city = city.replace("  ", " ")
     if len(city) > 30 or not is_english(city):
         return ""
     return city
