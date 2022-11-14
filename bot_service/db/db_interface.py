@@ -15,9 +15,12 @@ class Fake_db:
         print(Fake_db.db)
 
 
+database = Fake_db()
+
+
 class Crud:
     def __init__(self) -> None:
-        self.db = Fake_db
+        self.db = database
 
     def get_chosen_city(self, chat_id: int) -> str:
         return self.db.db_select("city", chat_id)
